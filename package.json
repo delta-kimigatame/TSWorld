@@ -1,0 +1,31 @@
+{
+  "name": "utaufrq",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "prepare": "npm run build",
+    "start": "webpack serve --mode=development",
+    "makedoc": "npx typedoc --entryPointStrategy expand ./src",
+    "test":"npx jest"
+  },
+  "keywords": [
+    "UTAU",
+    "frq"
+  ],
+  "author": "delta_kimigatame",
+  "license": "MIT",
+  "description": "IO .frq file for UTAU",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "typedoc": "^0.27.6",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
+}
