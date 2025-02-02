@@ -8,18 +8,21 @@
     "prepare": "npm run build",
     "start": "webpack serve --mode=development",
     "makedoc": "npx typedoc --entryPointStrategy expand ./src",
-    "test":"npx jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "UTAU",
     "frq"
   ],
+  "type": "module",
   "author": "delta_kimigatame",
   "license": "MIT",
   "description": "IO .frq file for UTAU",
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.0",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
     "typedoc": "^0.27.6",
@@ -27,5 +30,9 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
+  },
+  "dependencies": {
+    "@types/emscripten": "^1.40.0",
+    "utauwav": "^0.4.0"
   }
 }

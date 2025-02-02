@@ -1,5 +1,6 @@
-const path = require("path");
-module.exports = {
+import * as path from 'path';
+const __dirname = import.meta.dirname;
+export default  {
   entry: {
     index: "./src/index.ts"
   },
@@ -13,7 +14,7 @@ module.exports = {
   },
   resolve: {
     fallback: { buffer: false },
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js",".wasm"],
   },
   devServer: {
     static: {
