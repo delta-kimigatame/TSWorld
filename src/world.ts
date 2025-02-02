@@ -5,7 +5,7 @@
 import loadWorldJS, { MainModule } from "./WorldJS/WorldJS.js";
 const DOUBLE_SIZE: number = 8;
 
-export default class World {
+export class World {
   /**wasmモジュール */
   private world: MainModule | null = null;
 
@@ -157,7 +157,7 @@ export default class World {
       fft_size,
       sample_rate,
       threshold
-    ) as D4CResult;
+    ) as D4CReturn;
     // 戻り値をjavascriptのメモリ空間にdeepcopy。やらないとwasm側のタイミングで値が消えることがある
     for(let i=0;i<result.aperiodicity.length;i++){
         result.aperiodicity[i] = Float64Array.from(Array.from(result.aperiodicity[i]))
@@ -234,6 +234,6 @@ export interface CheapTrickReturn {
   spectral: Array<Float64Array>;
 }
 
-export interface D4CResult {
+export interface D4CReturn {
   aperiodicity: Array<Float64Array>;
 }

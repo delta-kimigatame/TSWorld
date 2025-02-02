@@ -1,8 +1,13 @@
 {
   "name": "tsworld",
   "version": "0.0.1",
-  "main": "./dist/world.js",
-  "types": "./dist/world.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "webpack --mode=production",
     "prepare": "npm run build",

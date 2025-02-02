@@ -1,4 +1,4 @@
-import World, { CheapTrickReturn, HarvestReturn } from "../src/world";
+import  { World,CheapTrickReturn, HarvestReturn } from "../src/world";
 import Wave, { WaveProcessing, GenerateWave } from "utauwav";
 import fs from "fs";
 

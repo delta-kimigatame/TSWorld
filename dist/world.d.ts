@@ -1,4 +1,4 @@
-export default class World {
+export declare class World {
     /**wasmモジュール */
     private world;
     constructor();
@@ -57,6 +57,6 @@ export interface CheapTrickReturn {
     fft_size: number;
     spectral: Array<Float64Array>;
 }
-export interface D4CResult {
+export interface D4CReturn {
     aperiodicity: Array<Float64Array>;
 }

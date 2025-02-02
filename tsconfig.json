@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
       "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-      "module": "ES2022" /* Specify what module code is generated. */,
+      "module": "ESNext" /* Specify what module code is generated. */,
       "allowJs": true,
+      "moduleResolution": "node",
       "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
       "sourceMap": true /* Create source map files for emitted JavaScript files. */,
       "outDir": "./dist" /* Specify an output folder for all emitted files. */,
