@@ -2,13 +2,13 @@ import * as path from 'path';
 const __dirname = import.meta.dirname;
 export default  {
   entry: {
-    index: "./src/index.ts"
+    world: "./src/world.ts"
   },
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
     library: {
-      name: "UtauWav",
+      name: "TSWorld",
       type: "umd",
     },
   },

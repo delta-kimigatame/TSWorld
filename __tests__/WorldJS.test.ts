@@ -1,5 +1,5 @@
 import World, { CheapTrickReturn, HarvestReturn } from "../src/world";
-import Wave,{WaveProcessing,GenerateWave} from "utauwav";
+import Wave, { WaveProcessing, GenerateWave } from "utauwav";
 import fs from "fs";
 
 describe("harvestのテスト", () => {
@@ -317,12 +317,15 @@ describe("Synthesisのテスト", () => {
       44100,
       5.0
     );
-    if (result){
-      const wp=new Wave.WaveProcessing()
-      const output_data = wp.InverseLogicalNormalize(Array.from(result),16)
-      const output = Wave.GenerateWave(44100,16,output_data,null)
-      const out_buf = output.Output()
-      fs.writeFileSync("./__tests__/test_result/output.wav",new DataView(out_buf))
+    if (result) {
+      const wp = new Wave.WaveProcessing();
+      const output_data = wp.InverseLogicalNormalize(Array.from(result), 16);
+      const output = Wave.GenerateWave(44100, 16, output_data, null);
+      const out_buf = output.Output();
+      fs.writeFileSync(
+        "./__tests__/test_result/output.wav",
+        new DataView(out_buf)
+      );
     }
     // testは通らないけど聴感的には同じだからヨシ
     // console.log(harvest_result.f0.length)
@@ -336,6 +339,5 @@ describe("Synthesisのテスト", () => {
     //     expect(result[i]).toBeCloseTo(pysynth[i]);
     //   }
     // }
-    
   });
 });

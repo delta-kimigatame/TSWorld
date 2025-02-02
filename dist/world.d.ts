@@ -30,9 +30,10 @@ export default class World {
      * @param time_axis 基本周波数列の時間軸。frame_period毎に均等の値(s)
      * @param fft_size default:2048、2のべき乗の数
      * @param sample_rate default:44100 サンプリング周波数
+     * @param threshold 無声・有声を判断する閾値。0だとすべて有声、1だとすべてを無声と判定
      * @returns 非周期性指標列
      */
-    D4C(sample: Float64Array, f0: Float64Array, time_axis: Float64Array, fft_size?: number, sample_rate?: number): Array<Float64Array> | null;
+    D4C(sample: Float64Array, f0: Float64Array, time_axis: Float64Array, fft_size?: number, sample_rate?: number, threshold?: number): Array<Float64Array> | null;
     /**
      * 基本周波数、スペクトル包絡、非周期性指標を与えて波形データを返す。
      * @param f0 基本周波数列
@@ -55,4 +56,7 @@ export interface HarvestReturn {
 export interface CheapTrickReturn {
     fft_size: number;
     spectral: Array<Float64Array>;
+}
+export interface D4CResult {
+    aperiodicity: Array<Float64Array>;
 }

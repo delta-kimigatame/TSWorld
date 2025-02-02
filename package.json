@@ -1,8 +1,8 @@
 {
   "name": "tsworld",
   "version": "0.0.1",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/world.js",
+  "types": "./dist/world.d.ts",
   "scripts": {
     "build": "webpack --mode=production",
     "prepare": "npm run build",
@@ -27,7 +27,7 @@
     "ts-loader": "^9.5.2",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.3",
-    "utauwav": "^0.4.2",
+    "utauwav": "^0.5.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
