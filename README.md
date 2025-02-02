@@ -35,7 +35,7 @@ const result = world.Synthesis(harvest_result.f0,cheaptrick_result.spectral,d4c_
 ```
 
 # ドキュメント
-(https://delta-kimigatame.github.io/TSWorld/)
+(https://delta-kimigatame.github.io/TSWorld/index.html)
 
 # リンク
 本家 World(https://github.com/mmorise/World)
