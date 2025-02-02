@@ -234,6 +234,6 @@ export interface CheapTrickReturn {
   spectral: Array<Float64Array>;
 }
 
-interface D4CResult {
+export interface D4CResult {
   aperiodicity: Array<Float64Array>;
 }

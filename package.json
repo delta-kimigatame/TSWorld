@@ -1,5 +1,5 @@
 {
-  "name": "utaufrq",
+  "name": "tsworld",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,13 +11,13 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
-    "UTAU",
-    "frq"
+    "typescript",
+    "world"
   ],
   "type": "module",
   "author": "delta_kimigatame",
   "license": "MIT",
-  "description": "IO .frq file for UTAU",
+  "description": "typescript wrapper for @mmorise/World",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.0",
@@ -27,12 +27,9 @@
     "ts-loader": "^9.5.2",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.3",
+    "utauwav": "^0.4.2",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
-  },
-  "dependencies": {
-    "@types/emscripten": "^1.40.0",
-    "utauwav": "^0.4.0"
   }
 }
