@@ -19,6 +19,7 @@
     "typescript",
     "world"
   ],
+  "homepage": "https://delta-kimigatame.github.io/TSWorld/index.html",
   "type": "module",
   "author": "delta_kimigatame",
   "license": "MIT",
