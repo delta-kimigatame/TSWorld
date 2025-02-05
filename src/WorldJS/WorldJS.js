@@ -46,7 +46,7 @@ if (ENVIRONMENT_IS_NODE) {
   // When building an ES module `require` is not normally available.
   // We need to use `createRequire()` to construct the require()` function.
   // const {createRequire} = await import("module");
-  /** @suppress{duplicate} */ var require = createRequire(import.meta.url);
+  // /** @suppress{duplicate} */ var require = createRequire(import.meta.url);
 }
 
 // --pre-jses are emitted after the Module integration code, so that they can
@@ -87,13 +87,14 @@ if (ENVIRONMENT_IS_NODE) {
   }
   // These modules will usually be used on Node.js. Load them eagerly to avoid
   // the complexity of lazy-loading.
-  var fs = require("fs");
-  var nodePath = require("path");
+  const fs = await import('fs');
+  const path = await import('path');
   // EXPORT_ES6 + ENVIRONMENT_IS_NODE always requires use of import.meta.url,
   // since there's no way getting the current absolute path of the module when
   // support for that is not available.
   if (!import.meta.url.startsWith("data:")) {
-    scriptDirectory = nodePath.dirname(require("url").fileURLToPath(import.meta.url)) + "/";
+    const { fileURLToPath } = await import('url');
+    scriptDirectory = path.dirname(fileURLToPath(import.meta.url)) + "/";
   }
   // include: node_shell_read.js
   readBinary = filename => {
@@ -1252,13 +1253,13 @@ var PATH = {
 
 Module["PATH"] = PATH;
 
-var initRandomFill = () => {
+var initRandomFill = async() => {
   // This block is not needed on v19+ since crypto.getRandomValues is builtin
   if (ENVIRONMENT_IS_NODE) {
-    var nodeCrypto = require("crypto");
+    const { randomFillSync } = await import('crypto');
     return view => nodeCrypto.randomFillSync(view);
   }
-  return view => crypto.getRandomValues(view);
+  return view => randomFillSync(view);
 };
 
 Module["initRandomFill"] = initRandomFill;
@@ -7337,15 +7338,15 @@ var _emscripten_notify_memory_growth = memoryIndex => {
 
 Module["_emscripten_notify_memory_growth"] = _emscripten_notify_memory_growth;
 
-var __emscripten_system = command => {
+var __emscripten_system = async(command) => {
   if (ENVIRONMENT_IS_NODE) {
     if (!command) return 1;
     // shell is available
     var cmdstr = UTF8ToString(command);
     if (!cmdstr.length) return 0;
     // this is what glibc seems to do (shell works test?)
-    var cp = require("child_process");
-    var ret = cp.spawnSync(cmdstr, [], {
+    const { spawnSync } = await import('child_process');
+    var ret = spawnSync(cmdstr, [], {
       shell: true,
       stdio: "inherit"
     });
@@ -13323,7 +13324,7 @@ var SOCKFS = {
     return `socket[${SOCKFS.nextname.current++}]`;
   },
   websocket_sock_ops: {
-    createPeer(sock, addr, port) {
+    async createPeer(sock, addr, port) {
       var ws;
       if (typeof addr == "object") {
         ws = addr;
@@ -13369,7 +13370,8 @@ var SOCKFS = {
           // If node we use the ws library.
           var WebSocketConstructor;
           if (ENVIRONMENT_IS_NODE) {
-            WebSocketConstructor = /** @type{(typeof WebSocket)} */ (require("ws"));
+            const wsModule = await import("ws");
+            WebSocketConstructor = wsModule.default;
           } else {
             WebSocketConstructor = WebSocket;
           }
@@ -13609,14 +13611,15 @@ var SOCKFS = {
       // was a success.
       sock.connecting = true;
     },
-    listen(sock, backlog) {
+    async listen(sock, backlog) {
       if (!ENVIRONMENT_IS_NODE) {
         throw new FS.ErrnoError(138);
       }
       if (sock.server) {
         throw new FS.ErrnoError(28);
       }
-      var WebSocketServer = require("ws").Server;
+      const wsModule = await import("ws");
+      const WebSocketServer = wsModule.Server;
       var host = sock.saddr;
       sock.server = new WebSocketServer({
         host,
