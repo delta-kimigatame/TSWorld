@@ -1,5 +1,6 @@
+import { describe, test, expect } from 'vitest';
 import  { World,CheapTrickReturn, HarvestReturn } from "../src/world";
-import Wave, { WaveProcessing, GenerateWave } from "utauwav";
+import  { Wave,WaveProcessing, GenerateWave } from "utauwav";
 import fs from "fs";
 
 describe("harvestのテスト", () => {
@@ -9,7 +10,7 @@ describe("harvestのテスト", () => {
   for (let i = 0; i < buffer.length; i++) {
     safeData[i] = buffer[i];
   }
-  const wav = new Wave.Wave(safeData.buffer);
+  const wav = new Wave(safeData.buffer);
   const ndata = wav.LogicalNormalize(1);
   test("test_before_initialize", async () => {
     const world = new World();
@@ -76,7 +77,7 @@ describe("cheaptrickのテスト", () => {
   for (let i = 0; i < buffer.length; i++) {
     safeData[i] = buffer[i];
   }
-  const wav = new Wave.Wave(safeData.buffer);
+  const wav = new Wave(safeData.buffer);
   const ndata = wav.LogicalNormalize(1) as Array<number>;
   const world = new World();
   test("test_before_initialize", async () => {
@@ -176,7 +177,7 @@ describe("d4cのテスト", () => {
   for (let i = 0; i < buffer.length; i++) {
     safeData[i] = buffer[i];
   }
-  const wav = new Wave.Wave(safeData.buffer);
+  const wav = new Wave(safeData.buffer);
   const ndata = wav.LogicalNormalize(1) as Array<number>;
   const world = new World();
   test("test_before_initialize", async () => {
@@ -285,7 +286,7 @@ describe("Synthesisのテスト", () => {
   for (let i = 0; i < buffer.length; i++) {
     safeData[i] = buffer[i];
   }
-  const wav = new Wave.Wave(safeData.buffer);
+  const wav = new Wave(safeData.buffer);
   const ndata = wav.LogicalNormalize(1) as Array<number>;
   const world = new World();
   test("synth_result", async () => {
@@ -318,9 +319,9 @@ describe("Synthesisのテスト", () => {
       5.0
     );
     if (result) {
-      const wp = new Wave.WaveProcessing();
+      const wp = new WaveProcessing();
       const output_data = wp.InverseLogicalNormalize(Array.from(result), 16);
-      const output = Wave.GenerateWave(44100, 16, output_data, null);
+      const output = GenerateWave(44100, 16, output_data, null);
       const out_buf = output.Output();
       fs.writeFileSync(
         "./__tests__/test_result/output.wav",
