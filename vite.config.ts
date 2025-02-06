@@ -16,7 +16,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: [],
+      external: ["fs", "path", "url", "crypto", "child_process", "ws"],
     },
   },
   resolve: {

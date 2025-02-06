@@ -107,7 +107,11 @@ if (ENVIRONMENT_IS_NODE) {
   readAsync = async (filename, binary = true) => {
     // See the comment in the `readBinary` function.
     filename = isFileURI(filename) ? new URL(filename) : filename;
-    var ret = fs.readFileSync(filename, binary ? undefined : "utf8");
+    if(filename.startsWith("data:")){
+      var ret = Buffer.from(filename.split(",")[1],"base64")
+    }else{
+      var ret = fs.readFileSync(filename, binary ? undefined : "utf8");
+    }
     assert(binary ? Buffer.isBuffer(ret) : typeof ret == "string");
     return ret;
   };
