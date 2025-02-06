@@ -1,6 +1,6 @@
 {
   "name": "tsworld",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "./dist/tsworld.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -20,6 +20,9 @@
   "keywords": [
     "typescript",
     "world"
+  ],
+  "files": [
+    "dist"
   ],
   "homepage": "https://delta-kimigatame.github.io/TSWorld/index.html",
   "type": "module",
